@@ -1,4 +1,4 @@
-# SF Org Navigator
+# Salesforce  Tab Group
 
 Chrome Manifest V3 扩展：后台自动将受支持的 Salesforce 标签页按 tenant 分组。同一 tenant 在每个普通窗口建立独立管理组，无需打开 popup，也无需插件账号。产品与验收基线见 [规格文档](SF-Org-Navigator-Auto-Salesforce-Tab-Grouping-Specification.md)。
 

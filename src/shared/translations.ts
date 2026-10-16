@@ -81,7 +81,7 @@ export const english: Record<string, string> = {
   "存储、权限或恢复存在异常。已有用户状态受到保护；检查下方原因后再处理。":
     "Storage, permissions or recovery need attention. Existing user state is protected. Review the reasons below before taking action.",
   查看处理详情: "View processing details",
-  "设置 · SF Org Navigator": "Settings · SF Org Navigator",
+  "设置 · Salesforce Tab Group": "Settings · Salesforce  Tab Group",
   跳到设置内容: "Skip to settings",
   "让每个 Org 各归其位": "Every Org in its place",
   "设置一次，在熟悉的工作区里有序切换。":
