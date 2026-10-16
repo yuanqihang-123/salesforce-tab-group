@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>设置 · SF Org Navigator</title>
+  </head>
+  <body class="options">
+    <a class="skip-link" href="#grouping">跳到设置内容</a>
+    <main>
+      <header class="page-header">
+        <div class="brand">
+          <img src="/icons/icon48.png" alt="" />
+          <div>
+            <div class="eyebrow">SF Org Navigator / Settings</div>
+            <h1>让每个 Org 各归其位</h1>
+          </div>
+        </div>
+        <p class="lead">设置一次，在熟悉的工作区里有序切换。</p>
+      </header>
+      <div class="settings-layout">
+        <nav class="settings-nav" aria-label="设置导航">
+          <span class="eyebrow nav-label">工作区设置</span>
+          <a href="#language-settings">语言</a>
+          <a href="#grouping">自动分组</a>
+          <a href="#switch-targets">切换目标</a>
+          <a href="#tenant-preferences">Org 偏好与暂停</a>
+          <a href="#manual-overrides">手动排除</a>
+          <a href="#privacy">管理标记与隐私</a>
+          <p class="nav-note">配置仅保存在当前浏览器。<br />无需插件账号。</p>
+        </nav>
+        <div class="settings-content">
+          <div
+            id="feedback"
+            class="feedback"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+          ></div>
+          <section
+            id="language-settings"
+            aria-labelledby="language-heading"
+            tabindex="-1"
+          >
+            <h2 id="language-heading">界面语言</h2>
+            <p class="muted">选择设置页和扩展面板的显示语言。</p>
+            <label for="language">语言</label>
+            <select id="language" disabled>
+              <option value="zh-CN">简体中文</option>
+              <option value="en">English</option>
+            </select>
+          </section>
+          <section
+            id="grouping"
+            aria-labelledby="grouping-heading"
+            tabindex="-1"
+          >
+            <div class="row section-heading">
+              <h2 id="grouping-heading">自动分组</h2>
+              <label class="check toggle-label"
+                ><input id="enabled" type="checkbox" disabled /><span
+                  >启用自动分组</span
+                ></label
+              >
+            </div>
+            <div id="status">读取状态…</div>
+            <p class="muted section-description">
+              关闭后保留现有分组。固定标签页、你的分组和手动选择始终受到保护。
+            </p>
+          </section>
+          <section
+            id="switch-targets"
+            aria-labelledby="targets-heading"
+            tabindex="-1"
+          >
+            <div class="section-heading">
+              <h2 id="targets-heading">Org Switcher 目标</h2>
+              <span class="badge">主动切换</span>
+            </div>
+            <p class="muted">
+              添加常用 Org，在扩展面板中预览后切换当前标签页。
+            </p>
+            <form
+              id="target-form"
+              class="form-panel"
+              aria-labelledby="target-form-title"
+            >
+              <h3 id="target-form-title">添加切换目标</h3>
+              <label for="target-label">目标名称</label>
+              <input
+                id="target-label"
+                required
+                maxlength="80"
+                placeholder="例如 ACME / UAT"
+                autocomplete="off"
+              />
+              <p id="origins-help" class="field-help">
+                下面至少填写一个完整域名，以 https://
+                开头，不含路径或末尾斜线。同一目标的域名须属于同一个 Org。
+              </p>
+              <label for="lightning"
+                >Lightning origin <span class="optional">可选</span></label
+              >
+              <input
+                id="lightning"
+                type="url"
+                placeholder="https://acme--uat.sandbox.lightning.force.com"
+                aria-describedby="origins-help"
+                autocomplete="off"
+                spellcheck="false"
+              />
+              <div class="grid">
+                <div>
+                  <label for="my-domain"
+                    >My Domain origin <span class="optional">可选</span></label
+                  >
+                  <input
+                    id="my-domain"
+                    type="url"
+                    placeholder="https://acme--uat.sandbox.my.salesforce.com"
+                    aria-describedby="origins-help"
+                    autocomplete="off"
+                    spellcheck="false"
+                  />
+                </div>
+                <div>
+                  <label for="setup"
+                    >Setup origin <span class="optional">可选</span></label
+                  >
+                  <input
+                    id="setup"
+                    type="url"
+                    placeholder="https://acme--uat.sandbox.my.salesforce-setup.com"
+                    aria-describedby="origins-help"
+                    autocomplete="off"
+                    spellcheck="false"
+                  />
+                </div>
+              </div>
+              <div class="form-actions">
+                <button type="submit" id="save-target">保存切换目标</button
+                ><button
+                  type="button"
+                  class="secondary"
+                  id="cancel-edit"
+                  hidden
+                >
+                  取消编辑</button
+                ><span class="field-help">编辑时按 <kbd>Esc</kbd> 取消</span>
+              </div>
+              <div
+                id="target-feedback"
+                class="feedback"
+                role="status"
+                aria-live="polite"
+                aria-atomic="true"
+              ></div>
+            </form>
+            <div id="targets" aria-label="已保存的切换目标"></div>
+          </section>
+          <section
+            id="tenant-preferences"
+            aria-labelledby="tenants-heading"
+            tabindex="-1"
+          >
+            <h2 id="tenants-heading">Org 偏好与暂停</h2>
+            <p class="muted">
+              为完整域身份（tenant）添加别名和环境标注，或暂停自动管理。
+            </p>
+            <form
+              id="tenant-form"
+              class="form-panel"
+              aria-labelledby="tenant-form-title"
+            >
+              <h3 id="tenant-form-title">添加 Org 偏好</h3>
+              <label for="tenant-url">Salesforce URL</label>
+              <input
+                id="tenant-url"
+                type="url"
+                placeholder="https://acme--dev.sandbox.lightning.force.com"
+                required
+                aria-describedby="tenant-url-help"
+                autocomplete="off"
+                spellcheck="false"
+              />
+              <p id="tenant-url-help" class="field-help">
+                仅使用域名识别 Org；别名和环境标注不会合并不同的 Org。
+              </p>
+              <div class="grid">
+                <div>
+                  <label for="alias"
+                    >显示别名 <span class="optional">可选</span></label
+                  ><input
+                    id="alias"
+                    maxlength="80"
+                    placeholder="例如 开发环境"
+                    autocomplete="off"
+                  />
+                </div>
+                <div>
+                  <label for="environment">环境标注</label
+                  ><select id="environment">
+                    <option value="unknown">Unknown · 未验证</option>
+                    <option value="sandbox">Sandbox · 用户标注</option>
+                    <option value="development">Development · 用户标注</option>
+                    <option value="production">Production · 用户标注</option>
+                  </select>
+                </div>
+              </div>
+              <label class="check"
+                ><input id="excluded" type="checkbox" /><span
+                  >暂停此 Org 的自动管理（跨重启保留）</span
+                ></label
+              >
+              <div class="form-actions">
+                <button type="submit" id="save-tenant">保存偏好</button
+                ><button
+                  type="button"
+                  class="secondary"
+                  id="cancel-tenant-edit"
+                  hidden
+                >
+                  取消编辑
+                </button>
+              </div>
+              <div
+                id="tenant-feedback"
+                class="feedback"
+                role="status"
+                aria-live="polite"
+                aria-atomic="true"
+              ></div>
+            </form>
+            <div id="tenants" aria-label="已发现的 Org 与偏好"></div>
+          </section>
+          <section
+            id="manual-overrides"
+            aria-labelledby="overrides-heading"
+            tabindex="-1"
+          >
+            <h2 id="overrides-heading">手动排除的标签页</h2>
+            <p class="muted">
+              手动取消分组或移入其他组后，后台不会抢回。你可以逐个恢复。
+            </p>
+            <div id="overrides"></div>
+          </section>
+          <section id="privacy" aria-labelledby="privacy-heading" tabindex="-1">
+            <h2 id="privacy-heading">管理标记与隐私</h2>
+            <p class="muted">
+              本地运行，不读取 Cookie 或网页内容，不上传 URL 或浏览记录。
+            </p>
+            <details>
+              <summary>了解分组标记、排除记录和环境标注</summary>
+              <div class="details-content">
+                <p>
+                  管理组标题中的
+                  <code>[SFN:…]</code>
+                  是可见归属标记，用于结合本地登记表确认恢复组。删除标记、复制后发生冲突或混入其他
+                  tenant，会使相关组退出自动管理。保留标记的自定义标题和颜色不会被覆盖。
+                </p>
+                <p>
+                  标签页手动排除保存在本次扩展会话中，worker
+                  休眠或重启不会清除；浏览器重启、扩展
+                  reload、更新或禁用再启用后可能消失。跨重启暂停请使用 Org
+                  暂停设置。
+                </p>
+                <p>
+                  普通域默认环境为 unknown，production
+                  只是用户标注，不代表已验证。旧域名、自定义站点、共享登录入口、Visualforce
+                  和未验证的 partition 不会被猜测归因。
+                </p>
+                <p>
+                  不注入页面，不访问 Salesforce
+                  API。完整路径、查询参数和网页标题不写入存储。仅主动切换会导航当前标签页。
+                </p>
+              </div>
+            </details>
+          </section>
+          <footer>
+            SF Org Navigator 1.0 · Chrome 120+ · <kbd>Tab</kbd> 移动焦点 ·
+            <kbd>Enter</kbd> 提交表单 · <kbd>Esc</kbd> 取消编辑
+          </footer>
+        </div>
+      </div>
+    </main>
+    <script type="module" src="/src/options/index.ts"></script>
+  </body>
+</html>

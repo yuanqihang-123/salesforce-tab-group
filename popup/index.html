@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN" class="popup-document">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SF Org Navigator</title>
+  </head>
+  <body class="popup">
+    <main>
+      <header class="brand">
+        <img src="/icons/icon48.png" alt="" />
+        <div>
+          <div class="eyebrow">Your orgs, in order</div>
+          <h1>SF Org Navigator</h1>
+        </div>
+        <button
+          class="icon-button secondary"
+          id="settings"
+          aria-label="打开设置"
+          title="打开设置"
+        >
+          设置 ↗
+        </button>
+      </header>
+      <section class="grouping-card" aria-label="自动分组状态">
+        <div class="row">
+          <div id="status">读取状态…</div>
+          <label class="check toggle-label"
+            ><input type="checkbox" id="enabled" disabled /><span
+              >自动分组</span
+            ></label
+          >
+        </div>
+      </section>
+      <section aria-labelledby="switch-heading">
+        <div class="section-heading">
+          <h2 id="switch-heading">切换 Org</h2>
+          <span class="badge">先预览，再切换</span>
+        </div>
+        <p class="muted section-description">在另一个 Org 中继续当前工作。</p>
+        <div id="target-empty" class="empty-state" hidden>
+          <strong>添加你的第一个 Org</strong>
+          <p>配置目标域名后，就能在这里预览并切换。</p>
+          <button id="configure-target" class="secondary" type="button">
+            添加切换目标 ↗
+          </button>
+        </div>
+        <form id="switch-form" aria-describedby="switch-help">
+          <label for="target">目标 Org</label>
+          <select id="target" disabled>
+            <option value="">正在读取目标…</option>
+          </select>
+          <label class="check"
+            ><input id="home" type="checkbox" /><span>打开目标首页</span></label
+          >
+          <p id="switch-help" class="field-help">
+            默认保留支持的路径；记录与权限可能不同。
+          </p>
+          <div id="surface-fields" hidden>
+            <label for="surface">首页类型</label>
+            <select id="surface" disabled>
+              <option value="lightning">Lightning</option>
+              <option value="my-domain">My Domain</option>
+              <option value="setup">Setup</option>
+            </select>
+          </div>
+          <button id="preview" class="full-width" type="submit" disabled>
+            预览切换 <span aria-hidden="true">→</span>
+          </button>
+        </form>
+        <div
+          id="feedback"
+          class="feedback"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        ></div>
+        <div id="switch-preview"></div>
+      </section>
+      <footer class="popup-footer">
+        <span>本地处理 · 后台自动整理</span>
+        <span><kbd>Esc</kbd> 取消预览</span>
+      </footer>
+    </main>
+    <script type="module" src="/src/popup/index.ts"></script>
+  </body>
+</html>

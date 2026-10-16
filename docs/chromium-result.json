@@ -1,0 +1,52 @@
+{
+  "browser": "151.0.7922.34",
+  "platform": "darwin",
+  "headless": true,
+  "network": "Offline context + blocked DNS; HTTP(S) fixtures intercepted, no Salesforce connection",
+  "results": [
+    {
+      "test": "3 windows / 60 Salesforce tabs / 20 other tabs, without opening popup",
+      "passed": true,
+      "elapsedMs": 3491,
+      "apiWrites": {
+        "group": 9,
+        "ungroup": 0,
+        "metadata": 9,
+        "session": 78,
+        "local": 3
+      }
+    },
+    {
+      "test": "Native manual ungroup creates a session override",
+      "passed": true
+    },
+    {
+      "test": "Options: restore override, toggle off/on, alarm removal and rescan",
+      "passed": true
+    },
+    {
+      "test": "Stable state stops all Chrome and storage writes",
+      "passed": true
+    },
+    {
+      "test": "10 incremental tab samples",
+      "passed": true,
+      "elapsedMs": [341, 345, 348, 354, 354, 355, 356, 357, 357, 359],
+      "p95Ms": 359,
+      "timing": "Includes creation/commit; polling resolution 100ms"
+    },
+    {
+      "test": "Popup/options render under MV3 CSP; saved target available",
+      "passed": true
+    },
+    {
+      "test": "Actual popup preview and per-click production confirmation navigate the chosen tab",
+      "passed": true
+    },
+    {
+      "test": "Actual service worker stop/restart preserves manual override",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,62 @@
+{
+  "browser": "151.0.7922.34",
+  "platform": "darwin",
+  "headless": true,
+  "network": "Offline context, blocked DNS and intercepted HTTP(S); no Salesforce connection",
+  "scope": "Real MV3 worker and extension pages; popup is hosted as a page for deterministic keyboard input. Response-delay harness preserves real worker responses. Native action-popup chrome, OS shortcuts and IME candidate UI require manual acceptance.",
+  "results": [
+    {
+      "test": "Popup empty state prevents preview",
+      "passed": true
+    },
+    {
+      "test": "Native Enter submits once while save is pending, then announces success",
+      "passed": true
+    },
+    {
+      "test": "Edit Escape restores focus; runtime refresh preserves draft and list focus",
+      "passed": true
+    },
+    {
+      "test": "Tenant keyboard save, feedback and Escape focus return",
+      "passed": true
+    },
+    {
+      "test": "Deleting the edited target from another session resets the stale editor",
+      "passed": true
+    },
+    {
+      "test": "Desktop and 360 px dark settings have no horizontal overflow",
+      "passed": true
+    },
+    {
+      "test": "Space toggles grouping without losing target; homepage surfaces match target",
+      "passed": true
+    },
+    {
+      "test": "Native ungroup and keyboard restore focus the adjacent action, then the empty section",
+      "passed": true
+    },
+    {
+      "test": "Removing the last status reason preserves keyboard focus",
+      "passed": true
+    },
+    {
+      "test": "Changed target rejects a delayed real preview response",
+      "passed": true
+    },
+    {
+      "test": "Enter previews only; production requires confirmation; Escape cancels and returns focus",
+      "passed": true
+    },
+    {
+      "test": "Settings updates invalidate preview and preserve selected target",
+      "passed": true
+    },
+    {
+      "test": "Space, Tab and Enter explicitly confirm production navigation",
+      "passed": true
+    }
+  ],
+  "errors": []
+}
